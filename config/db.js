@@ -2,7 +2,7 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize("yc0vd_sheisthegoal", "root", "", {
-  host: "localhost",
+  host: "yc0vd.myd.infomaniak.com",
   dialect: "mysql",
   logging: false
 });
