@@ -1,0 +1,48 @@
+<style>
+  .navbar {
+      background-color: var(--primary-green, #004d40);
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .navbar ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+  }
+  .navbar li {
+      margin-left: 25px;
+  }
+  .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.3s ease;
+  }
+  .navbar a:hover {
+      color: white;
+      border-bottom-color: var(--accent-terracotta, #c86e58);
+  }
+</style>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="/">🏠 الرئيسية</a></li>
+    <li><a href="/feedback">💬 آراء الزوار</a></li>
+
+    <% if (user) { %>
+      <li><a href="/espace">🧑‍💼 فضاء المستخدم</a></li>
+      <li><a href="/logout">تسجيل الخروج</a></li>
+    <% } else { %>
+      <li><a href="/login">تسجيل الدخول</a></li>
+      <li><a href="/register">إنشاء حساب</a></li>
+    <% } %>
+  </ul>
+</nav>
+<!-- ✅ Inclure les messages ici -->
+<%- include("partials/messages") %>

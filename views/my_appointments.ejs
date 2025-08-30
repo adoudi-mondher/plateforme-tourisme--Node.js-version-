@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>حجوزاتي - She is the goal</title>
+    <link rel="stylesheet" href="/css/theme.css">
+    <style>
+        .appointments-list {
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .appointment-item {
+            background-color: var(--card-white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn-cancel {
+            background-color: #dc3545;
+            padding: 5px 15px;
+            font-size: 14px;
+            margin-left: 20px;
+        }
+        .btn-cancel:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <%- include("navbar") %>
+
+    <div class="content">
+        <h1 style="text-align: center;">قائمة حجوزاتي</h1>
+
+        
+
+        <div class="appointments-list">
+            <% if (appointments && appointments.length > 0) { %>
+                <% appointments.forEach(appt => { %>
+                    <div class="appointment-item">
+                        <div>
+                            <h3><%= appt.service_name %></h3>
+                            <p>تاريخ الموعد: <%= appt.appointment_date %></p>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <span style="background-color:#004d40; color:white; padding: 5px 15px; border-radius: 20px;"><%= appt.status %></span>
+                            <form method="POST" action="/cancel_appointment/<%= appt.id %>" onsubmit="return confirm('هل أنت متأكد من رغبتك في إلغاء هذا الموعد؟');">
+                                <button type="submit" class="btn btn-cancel">إلغاء</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p style="text-align: center;">ليس لديك أي حجوزات حتى الآن.</p>
+                <div style="text-align: center;">
+                    <a href="/book_appointment" class="btn">احجز موعداً جديداً</a>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

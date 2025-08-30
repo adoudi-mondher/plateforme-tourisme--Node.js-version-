@@ -1,0 +1,11 @@
+<% if (messages.error && messages.error.length > 0) { %>
+  <div class="alert alert-danger" style="background:#f8d7da;color:#721c24;padding:10px;border-radius:5px;margin-bottom:15px;">
+    <%= messages.error[0] %>
+  </div>
+<% } %>
+
+<% if (messages.success && messages.success.length > 0) { %>
+  <div class="alert alert-success" style="background:#d4edda;color:#155724;padding:10px;border-radius:5px;margin-bottom:15px;">
+    <%= messages.success[0] %>
+  </div>
+<% } %>

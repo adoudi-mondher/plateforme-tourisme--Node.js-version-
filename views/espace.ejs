@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>فضاء المستخدم - She is the goal</title>
+    
+    <link rel="stylesheet" href="/css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        .content { max-width: 1140px; }
+        .page-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+        .welcome-section {
+            background-color: #e8e4db;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0 50px 0;
+            text-align: center;
+        }
+        .welcome-section h2 {
+            margin-top: 0;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        .welcome-section p {
+            font-size: 1.1rem;
+            color: var(--text-charcoal);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: var(--card-white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .feature-card h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+        }
+        .feature-card .icon {
+            font-size: 2rem;
+            color: var(--accent-terracotta);
+            line-height: 1;
+        }
+        .feature-card p {
+            margin-bottom: 20px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <%- include("navbar") %>
+    
+    <div class="content">
+        <h1 class="page-title">فضائك الشخصي</h1>
+        
+        <div class="welcome-section">
+            <h2>مرحباً بك، <%= user_name %>!</h2>
+            <p>هنا يمكنك إدارة حسابك، متابعة حجوزاتك، والوصول إلى الميزات الخاصة بك بكل سهولة.</p>
+        </div>
+        
+        <div class="features-grid">            
+            <div class="feature-card">
+                <h3>
+                    <i class="fas fa-comments icon"></i>
+                    <span>آرائك السابقة</span>
+                </h3>
+                <p>شاهد جميع الآراء التي شاركتها معنا، وقم بتعديلها أو حذفها.</p>
+                <a href="/my_feedback" class="btn">عرض الآراء</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>
+                    <i class="fas fa-calendar-alt icon"></i>
+                    <span>المواعيد والحجوزات</span>
+                </h3>
+                <p>احجز موعداً لزيارتك القادمة أو اطلع على حجوزاتك المؤكدة.</p>
+                <a href="/book_appointment" class="btn">حجز موعد</a>
+            </div>
+            
+            <div class="feature-card">
+                <h3>
+                    <i class="fas fa-user-cog icon"></i>
+                    <span>إعدادات الحساب</span>
+                </h3>
+                <p>قم بتحديث معلومات ملفك الشخصي وتفضيلاتك بكل سهولة.</p>
+                <a href="/account_settings" class="btn">تعديل الملف الشخصي</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

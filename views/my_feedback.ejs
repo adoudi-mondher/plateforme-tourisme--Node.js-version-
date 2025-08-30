@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>آرائي السابقة - She is the goal</title>
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+    <%- include("navbar") %>
+
+    <div class="content" style="max-width: 800px;">
+        <h1 style="text-align: center;">آرائي السابقة</h1>
+        
+        <% if (feedbacks && feedbacks.length > 0) { %>
+            <% feedbacks.forEach(item => { %>
+                <div class="feedback-item" style="border-right: 4px solid var(--primary-green);">
+                    <p><%= item.opinion %></p>
+
+                    <% if (item.media_path) { %>
+                        <% if (item.media_type === "image") { %>
+                            <img src="/<%= item.media_path %>" 
+                                 alt="صورة مرفقة" 
+                                 class="media-preview" 
+                                 style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 15px;">
+                        <% } else if (item.media_type === "video") { %>
+                            <video controls class="media-preview" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 15px;">
+                                <source src="/<%= item.media_path %>" type="video/mp4">
+                                متصفحك لا يدعم تشغيل الفيديو
+                            </video>
+                        <% } %>
+                    <% } %>
+
+                    <small style="color: #777; display: block; margin-top: 15px;">
+                        بتاريخ: <%= item.submitted_at %>
+                    </small>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p style="text-align: center;">لم تقم بإضافة أي آراء حتى الآن.</p>
+        <% } %>
+    </div>
+</body>
+</html>
